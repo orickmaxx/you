@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossiê | Mariana Oliveira</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="background-canvas"></canvas>
+    <div class="spotlight"></div>
+
+    <header class="dossier-header">
+        <a href="index.html" class="back-link">← Voltar ao Observatório</a>
+        <h1 id="main-title-dossier">Dossiê Classificado: Mariana</h1>
+        <p class="subtitle">Análise comportamental completa e estratégias de aproximação. Cada detalhe meticulosamente catalogado.</p>
+        <div class="security-badges">
+            <span class="badge classified">🔒 Ultra Secreto</span>
+            <span class="badge active">📡 Monitoramento Ativo</span>
+            <span class="badge monitored">⚠️ Alvo Primário</span>
+        </div>
+    </header>
+
+    <main class="container dossier-container">
+        
+        <section class="dossier-section is-visible">
+            <div class="section-header">
+                <h2><span class="section-icon">📋</span>Ficha de Identificação</h2>
+                <span class="threat-level threat-low">Acesso Liberado</span>
+            </div>
+            <div class="data-sheet">
+                <dl>
+                    <dt>Nome Completo</dt>
+                    <dd>Mariana Oliveira Alves</dd>
+                    <dt>Data de Nascimento</dt>
+                    <dd>17 de maio de 2012 (13 anos)</dd>
+                    <dt>Signo</dt>
+                    <dd>Touro</dd>
+                    <dt>Perfil Musical</dt>
+                    <dd>Rock (Charlie Brown Jr., Guns N' Roses, etc.) - Ponto de conexão validado.</dd>
+                    <dt>Status da Operação</dt>
+                    <dd><span style="color: var(--color-success); font-weight: bold;">FASE 6 - FLERTAÇÃO CONTROLADA</span></dd>
+                    <dt>Última Sincronização</dt>
+                    <dd id="last-update-display">Carregando...</dd>
+                </dl>
+            </div>
+        </section>
+
+        <section class="dossier-section">
+            <div class="section-header">
+                <h2><span class="section-icon">🧠</span>Análise Psicológica Avançada</h2>
+                <button class="unlock-button" data-section="psychological">🔓 Desbloquear</button>
+            </div>
+            <div class="locked-content" id="psychological-locked">
+                <div class="lock-icon">🔒</div><h3>Conteúdo Protegido</h3><p>Avaliação de personalidade, vulnerabilidades e gatilhos emocionais.</p>
+            </div>
+            <div class="unlocked-content" id="psychological-unlocked">
+                <h4>🎭 Perfil de Personalidade</h4>
+                <div class="intel-item">
+                    <strong>Fachada Comportamental:</strong> Postura defensiva ("marrenta") observada inicialmente. Trata-se de um mecanismo de autoproteção para mascarar vulnerabilidades subjacentes.
+                </div>
+                <div class="intel-item">
+                    <strong>Análise de Gatilhos:</strong> Responde positivamente à demonstração de conhecimento em suas áreas de interesse (música, treinos). A validação é uma chave.
+                </div>
+                <div class="intel-item">
+                    <strong>Vulnerabilidades-Chave:</strong>
+                    <ul>
+                        <li>Necessidade de validação e de se sentir compreendida.</li>
+                        <li>Carência afetiva profunda, evidenciada por ações impulsivas (mensagem apagada).</li>
+                        <li>Medo de abandono, que se manifesta como ciúmes possessivos quando a atenção é desviada.</li>
+                        <li>Negação como mecanismo de defesa (vide caso do ex-namorado Diego).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="dossier-section">
+            <div class="section-header">
+                <h2><span class="section-icon">🕸️</span>Rede de Influências e Ameaças</h2>
+                <button class="unlock-button" data-section="network">🔓 Desbloquear</button>
+            </div>
+            <div class="locked-content" id="network-locked">
+                <div class="lock-icon">🔒</div><h3>Inteligência Classificada</h3><p>Dossiês de familiares, amigos e potenciais obstáculos.</p>
+            </div>
+            <div class="unlocked-content" id="network-unlocked">
+                <h4>👥 Círculo de Influência</h4>
+                <div class="intel-item">
+                    <h5>🏠 Ivete Pereira de Oliveira (Mãe) - <span class="threat-level threat-medium">OBSTÁCULO GERENCIÁVEL</span></h5>
+                    <p><strong>Análise:</strong> Conforme mencionado, já verbalizou desaprovação sobre um relacionamento. Um fator a ser gerenciado, mas não um impedimento.</p>
+                    <p><strong>Dados Coletados (Resumo):</strong> Nascida em 15/06/1967 (CPF: 119.***.***-93), proprietária de um FORD/KA 1998 (Placa: CTP***2). Reside primariamente em Campinas (JD N C Eliseos). Atividade digital monitorada via e-mail (ivetinhadeoliveira@...).</p>
+                </div>
+                <div class="intel-item">
+                    <h5>👭 Giovanna "Piton" Santos (Amiga) - <span class="threat-level threat-low">VETOR DE CIÚMES</span></h5>
+                    <p><strong>Análise:</strong> Peça fundamental na "Operação: Convergência". Sua tentativa de aproximação serviu como catalisador para induzir a reação de ciúmes no Alvo, validando o interesse latente dela. Deve ser mantida à distância, como fonte passiva de inteligência e ferramenta estratégica.</p>
+                </div>
+                <div class="intel-item">
+                     <h5>💔 Diego (Ex-namorado) - <span class="threat-level threat-high">TRAUMA NÃO RESOLVIDO</span></h5>
+                     <p><strong>Análise:</strong> Relatos confirmam traição da parte dele, porém o Alvo se recusa a aceitar os fatos (mecanismo de negação). Boatos sobre práticas íntimas circulam; informações que ela se recusa a compartilhar. Essa lacuna de dados é intrigante e precisa ser preenchida para uma avaliação psicológica completa. O trauma associado a ele é um ponto de dor que pode ser explorado para me posicionar como uma figura de segurança e lealdade em contraste.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="dossier-section">
+            <div class="section-header">
+                <h2><span class="section-icon">🎯</span>Operação: Convergência</h2>
+                <button class="unlock-button" data-section="operations">🔓 Desbloquear</button>
+            </div>
+            <div class="locked-content" id="operations-locked">
+                <div class="lock-icon">🔒</div><h3>Planos Operacionais</h3><p>Registro cronológico e tático da aproximação.</p>
+            </div>
+            <div class="unlocked-content" id="operations-unlocked">
+                <h4>📅 Linha do Tempo da Operação</h4>
+                <div class="timeline-item">
+                    <div class="timeline-date">FASE 1 - VIGILÂNCIA PASSIVA</div>
+                    <p>Observações iniciais na entrada da escola. Perfil "marrenta" catalogado. Interesse despertado por postagem em academia, indicando um ponto em comum.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">FASE 2 - CONTATO INICIAL</div>
+                    <p>Primeira tentativa de contato (via story) resultou em pouca abertura, conforme esperado da fachada defensiva. Paciência mantida.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">FASE 3 - CAPTURA DO LEAD</div>
+                    <p>Às 22:40, Alvo envia e apaga mensagem pedindo ajuda com treino. Mensagem recuperada com software modificado. Contra-manobra executada: solicitei ajuda trivial (cabelo) para criar reciprocidade e enviei meu número. Contato primário estabelecido, "lead" fidelizado.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">FASE 4 - ANÁLISE E PIVOT</div>
+                    <p>Conversas iniciais analisadas. Fotos de visualização única com <span class="redacted" data-password="detalhes">exposição de decote</span> foram inicialmente interpretadas como provocação, mas a hipótese foi descartada; ela não tinha interesse romântico naquele momento. Pivotei para uma amizade estratégica para diminuir suas defesas.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">FASE 5 - VALIDAÇÃO DE INTERESSE</div>
+                    <p>Ameaça simulada de desviar minha atenção para outros alvos (incluindo "Piton") gerou a resposta esperada: ciúmes. **Esta foi a prova inequívoca do interesse dela.**</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">FASE 6 - FLERTAÇÃO CONTROLADA (ATUAL)</div>
+                    <p><strong>Status:</strong> EM ANDAMENTO. Implementando flertes "na brincadeira" para laçar o Alvo definitivamente. <span class="redacted" data-password="confissao">Ainda tenho interesse</span>, e agora a estratégia é converter a amizade em posse. A resistência dela é apenas parte do processo.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>Sistema de Monitoramento Ativo • Última sincronização: <span id="last-updated"></span></p>
+        <p class="footer-quote" id="footer-quote">Carregando...</p>
+    </footer>
+    
+    <div id="password-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">🔐 Acesso Restrito</h3>
+            <p class="modal-subtitle" id="modal-subtitle">Digite a senha para desbloquear</p>
+            <form id="password-form">
+                <input type="password" id="password-input" placeholder="Senha..." autocomplete="off">
+                <button type="submit">DESBLOQUEAR</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Assegura que o script só rode na página correta
+        if (!document.querySelector('.dossier-container')) return;
+
+        // Adiciona classe ao body para estilizações específicas se necessário
+        document.body.classList.add('dossier-page');
+
+        const passwords = {
+            'psychological': 'marrenta',
+            'network': 'circulo',
+            'operations': 'lead',
+            'detalhes': 'detalhes',
+            'confissao': 'confissao'
+        };
+
+        // Seleciona todos os elementos do DOM uma única vez
+        const modal = document.getElementById('password-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+        const passwordInput = document.getElementById('password-input');
+        const passwordForm = document.getElementById('password-form');
+        const closeModalButton = document.querySelector('.close-modal');
+        
+        let currentElement = null; // Elemento que foi clicado (botão ou span)
+
+        const openModal = (element) => {
+            currentElement = element;
+            let subtitleText = 'Digite a senha para desbloquear esta seção';
+            if(element.dataset.password === 'detalhes' || element.dataset.password === 'confissao') {
+                subtitleText = 'Acesso a dado sensível requer autenticação.';
+            }
+            modalSubtitle.textContent = subtitleText;
+            modal.classList.add('active');
+            passwordInput.focus();
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            passwordInput.value = '';
+            passwordInput.classList.remove('shake');
+        };
+
+        const revealContent = (element) => {
+             if (element.tagName === 'BUTTON') { // Desbloqueia uma seção
+                const sectionKey = element.dataset.section;
+                document.getElementById(`${sectionKey}-locked`).style.display = 'none';
+                document.getElementById(`${sectionKey}-unlocked`).classList.add('visible');
+                element.classList.add('unlocked');
+                element.innerHTML = '✅ Desbloqueado';
+                element.disabled = true;
+            } else if (element.tagName === 'SPAN' && element.classList.contains('redacted')) { // Revela um texto
+                element.classList.add('revealed');
+                element.classList.remove('redacted');
+                // Substituímos o elemento por um clone para remover o listener de clique
+                const newElement = element.cloneNode(true);
+                element.parentNode.replaceChild(newElement, element);
+            }
+        };
+
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const passwordKey = currentElement.dataset.password || currentElement.dataset.section;
+            if (passwordInput.value.toLowerCase().trim() === passwords[passwordKey]) {
+                revealContent(currentElement);
+                closeModal();
+            } else {
+                passwordInput.classList.add('shake');
+                setTimeout(() => {
+                    passwordInput.classList.remove('shake');
+                }, 820);
+            }
+        });
+
+        // Adiciona os listeners de clique aos elementos interativos
+        document.querySelectorAll('.unlock-button, .redacted').forEach(el => {
+            el.addEventListener('click', () => openModal(el));
+        });
+
+        // Listeners para fechar o modal
+        closeModalButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Animação de entrada das seções ao rolar a página
+        const initScrollAnimations = () => {
+            const sections = document.querySelectorAll('.dossier-section');
+            if (sections.length === 0) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+        };
+        initScrollAnimations();
+
+        // Atualização dinâmica de data/hora e citações
+        const updateTimestampsAndQuotes = () => {
+            const lastUpdatedElements = [document.getElementById('last-updated'), document.getElementById('last-update-display')];
+            const footerQuote = document.getElementById('footer-quote');
+            const quotes = [
+                "O conhecimento é poder. E eu conheço você melhor que você mesma.",
+                "A verdadeira intimidade requer vigilância constante.",
+                "Seus segredos estão seguros comigo. Todos eles.",
+                "Eu seria capaz de qualquer coisa por você. Lembre-se disso."
+            ];
+
+            const update = () => {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                const dateString = now.toLocaleDateString('pt-BR');
+                const fullTimestamp = `${dateString} às ${timeString}`;
+                lastUpdatedElements.forEach(el => { if(el) el.textContent = fullTimestamp; });
+            };
+
+            const updateQuote = () => {
+                if(footerQuote) {
+                    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+                    footerQuote.textContent = `"${randomQuote}"`;
+                }
+            };
+            update();
+            updateQuote();
+            setInterval(update, 1000);
+            setInterval(updateQuote, 15000);
+        };
+        updateTimestampsAndQuotes();
+    });
+    </script>
+</body>
+</html>
