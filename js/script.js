@@ -1,4 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- NOVO: CONTROLE DA MÚSICA DE FUNDO ---
+    const audio = new Audio('msc/theme.mp3');
+    audio.loop = true;
+    audio.volume = 0.3; // Volume inicial, pode ajustar (0.0 a 1.0)
+
+    let isPlaying = false;
+
+    // Tenta tocar o áudio. Navegadores modernos exigem interação do usuário.
+    const playAudio = () => {
+        if (!isPlaying) {
+            audio.play().then(() => {
+                isPlaying = true;
+                // Remove os event listeners depois que a música começar a tocar.
+                document.body.removeEventListener('click', playAudio);
+                document.body.removeEventListener('keydown', playAudio);
+            }).catch(error => {
+                // Autoplay foi bloqueado, a música começará na primeira interação.
+                console.log('Autoplay foi bloqueado. Esperando interação do usuário.');
+            });
+        }
+    };
+
+    // Adiciona event listeners para iniciar a música com a primeira interação do usuário.
+    document.body.addEventListener('click', playAudio);
+    document.body.addEventListener('keydown', playAudio);
+    // ------------------------------------------
+
     // Particle Background Effect - Optimized: Reduced particle count, increased maxDistance to reduce connections
     const initParticleBackground = () => {
         const canvas = document.getElementById('background-canvas');

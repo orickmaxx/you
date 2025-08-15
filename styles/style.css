@@ -221,8 +221,6 @@ li {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--color-accent);
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
 .dossier-section h2 {
@@ -251,7 +249,6 @@ li {
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 1px;
-    white-space: nowrap;
 }
 
 .unlock-button:hover {
@@ -479,7 +476,6 @@ li {
     box-shadow: 0 20px 60px rgba(176, 0, 32, 0.3);
     transform: scale(0.9);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
 }
 
 .modal-overlay.active .modal-content {
@@ -584,7 +580,7 @@ li {
 }
 
 /* -------------------------------------------------------------------------- */
-/* FLOATING ACTION BUTTON (INSTAGRAM) - NOVO                                  */
+/* FLOATING ACTION BUTTON (INSTAGRAM)                                         */
 /* -------------------------------------------------------------------------- */
 .floating-btn {
     position: fixed;
@@ -605,14 +601,13 @@ li {
 .floating-btn svg {
     width: 28px;
     height: 28px;
-    color: var(--color-primary-text);
-    stroke: var(--color-primary-text); /* Garante que o ícone seja visível */
+    stroke: var(--color-primary-text);
 }
 
 .floating-btn:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 12px 25px rgba(176, 0, 32, 0.4);
-    background: #d32f2f;
+    background-color: #d32f2f;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -665,8 +660,7 @@ li {
         padding: 1.5rem;
     }
     .dossier-header {
-        padding: 2rem 1.5rem;
-        margin-bottom: 2rem;
+        padding: 2rem 1rem;
     }
     .data-sheet dl {
         grid-template-columns: 1fr;
@@ -679,26 +673,21 @@ li {
     }
     .data-sheet dd {
         margin-bottom: 1rem;
-        padding-left: 0;
-        border-left: none;
+        padding-left: 0.5rem;
+        border-left: 3px solid var(--color-border);
     }
     .section-header {
         flex-direction: column;
+        gap: 1.5rem;
         align-items: flex-start;
     }
     .security-badges {
-        justify-content: center;
+        justify-content: flex-start;
     }
     .modal-content {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
     }
     .stats-grid {
         flex-direction: column;
-    }
-    .floating-btn {
-        width: 55px;
-        height: 55px;
-        bottom: 20px;
-        right: 20px;
     }
 }
