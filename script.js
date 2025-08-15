@@ -1,18 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // -------------------------------------------------------------------------- //
-    //                      EFEITO DE FUNDO COM PARTÍCULAS                        //
-    // -------------------------------------------------------------------------- //
+    // Particle Background Effect - Optimized: Reduced particle count, increased maxDistance to reduce connections
     const initParticleBackground = () => {
         const canvas = document.getElementById('background-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 70;
+        const particleCount = 30; // Reduced from 70 for better performance
 
         const resizeCanvas = () => {
             canvas.width = window.innerWidth;
-            canvas.height = document.body.scrollHeight; // Ajusta altura ao conteúdo
+            canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
         };
 
         class Particle {
@@ -46,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function connectParticles() {
-            const maxDistance = 100;
+            const maxDistance = 150; // Increased from 100 to reduce number of lines drawn
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -78,9 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     };
 
-    // -------------------------------------------------------------------------- //
-    //                      EFEITO DE SPOTLIGHT DO MOUSE                        //
-    // -------------------------------------------------------------------------- //
+    // Mouse Spotlight Effect
     const mouseSpotlightEffect = () => {
         const spotlight = document.querySelector('.spotlight');
         if (!spotlight) return;
@@ -90,14 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     };
-    
-    // -------------------------------------------------------------------------- //
-    //                      ATUALIZAÇÃO DE DATA/HORA E CITAÇÕES                 //
-    // -------------------------------------------------------------------------- //
+
+    // Timestamp and Quote Updates - Added more "You"-inspired quotes
     const updateTimestampsAndQuotes = () => {
         const lastUpdated = document.getElementById('last-updated');
         const lastSync = document.getElementById('last-sync');
-        const quoteEl = document.getElementById('dynamic-quote');
+        const dynamicQuote = document.getElementById('dynamic-quote');
 
         const quotes = [
             "O amor pode te deixar louco. A questão é: ele já não te encontrou assim?",
@@ -106,33 +99,35 @@ document.addEventListener('DOMContentLoaded', () => {
             "Eu não sou um 'talvez'. Eu sou a certeza que você estava procurando.",
             "Eu sei de tudo sobre você. É por isso que somos perfeitos juntos.",
             "A distância só me dá mais espaço para observar cada detalhe seu.",
-            "Eles te olham. Eu te enxergo por completo."
+            "Eles te olham. Eu te enxergo por completo.",
+            "Hello, you.", // Added "You" reference
+            "I will do anything to protect us.", // More show-inspired
+            "Sometimes, love means taking matters into your own hands."
         ];
 
         const update = () => {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            const timeString = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             const dateString = now.toLocaleDateString('pt-BR');
-            if(lastUpdated) lastUpdated.textContent = `${dateString} às ${timeString}`;
-            if(lastSync) lastSync.textContent = timeString;
+            const fullTimestamp = `${dateString} às ${timeString}`;
+            if (lastUpdated) lastUpdated.textContent = fullTimestamp;
+            if (lastSync) lastSync.textContent = fullTimestamp;
         };
-        
+
         const updateQuote = () => {
-             if(quoteEl) {
+            if (dynamicQuote) {
                 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-                quoteEl.textContent = `"${randomQuote}"`;
+                dynamicQuote.textContent = `"${randomQuote}"`;
             }
-        }
+        };
 
         update();
         updateQuote();
-        setInterval(update, 60000);
+        setInterval(update, 1000);
         setInterval(updateQuote, 30000);
     };
 
-    // -------------------------------------------------------------------------- //
-    //                          INICIALIZAÇÃO DAS FUNÇÕES                         //
-    // -------------------------------------------------------------------------- //
+    // Initialize Functions
     initParticleBackground();
     mouseSpotlightEffect();
     updateTimestampsAndQuotes();

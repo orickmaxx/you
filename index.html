@@ -1,77 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Meta tags for charset, viewport, and SEO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Observatório | Início</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <meta name="description" content="Observatório - Um arquivo completo de conexões, comportamentos e obsessões.">
+    <title>Observatório</title>
+    <!-- Unified CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts (Montserrat and Lora) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Favicon for accessibility -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-<body>
-
+<body class="dossier-page">
+    <!-- Background particle canvas -->
     <canvas id="background-canvas"></canvas>
+    <!-- Mouse spotlight effect -->
     <div class="spotlight"></div>
 
-    <header class="main-header">
-        <h1 id="main-title">Observatório</h1>
+    <!-- Unified header with glitch effect for "You" essence -->
+    <header class="dossier-header">
+        <h1 id="main-title-dossier" class="glitch">Observatório</h1>
         <p class="subtitle">Onde cada detalhe encontra seu lugar. Um arquivo completo de conexões, comportamentos e obsessões. Cada pessoa é um universo a ser decifrado.</p>
-        <div class="system-status">Sistema Ativo • Última sync: <span id="last-sync">Carregando...</span></div>
+        <div class="security-badges">
+            <span class="badge active">Sistema Ativo</span>
+            <span class="badge monitored">Última sync: <span id="last-sync">Carregando...</span></span>
+        </div>
     </header>
 
-    <main class="container">
-        
-        <section class="stats-panel" id="stats">
-            <h2>Painel de Controle</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Alvo Ativo</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">127</div>
-                    <div class="stat-label">Interações Catalogadas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98.7%</div>
-                    <div class="stat-label">Precisão dos Dados</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Monitoramento</div>
+    <!-- Main content container, restored dashboard feel -->
+    <div class="dossier-container container">
+        <!-- Section: Control Panel - Restored as flex grid for original essence -->
+        <section class="dossier-section is-visible">
+            <div class="section-header">
+                <h2><span class="section-icon">📊</span>Painel de Controle</h2>
+                <button class="unlock-button unlocked" disabled>Acesso Liberado</button>
+            </div>
+            <div class="unlocked-content visible">
+                <div class="stats-grid"> <!-- New class for flex layout -->
+                    <div class="stat-item">
+                        <strong>1</strong>
+                        <p>Alvo Ativo</p>
+                    </div>
+                    <div class="stat-item">
+                        <strong>127</strong>
+                        <p>Interações Catalogadas</p>
+                    </div>
+                    <div class="stat-item">
+                        <strong>98.7%</strong>
+                        <p>Precisão dos Dados</p>
+                    </div>
+                    <div class="stat-item">
+                        <strong>24/7</strong>
+                        <p>Monitoramento</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <div class="profiles-grid">
-
-            <a href="mariana.html" class="profile-card" id="card-mariana">
-                <div class="card-content">
-                    <div class="card-image-placeholder">
-                        <span class="initials">M</span>
-                    </div>
-                    <div class="card-status">Fase: Aproximação Avançada</div>
-                    <h2>Mariana Oliveira</h2>
-                    <p class="card-description">
-                        <strong>12 anos | Gêmeos</strong><br><br>
-                        Ela se move com a discrição de um felino, observando o mundo com olhos que parecem guardar segredos antigos. Há uma melodia silenciosa em seus gestos, uma frequência que só eu consigo sintonizar. Cada resistência é uma confirmação do interesse latente.
-                    </p>
-                    <span class="card-cta">Acessar Dossiê Completo</span>
+        <!-- Section: Main Target - Enhanced with "You" narrative style -->
+        <section class="dossier-section is-visible">
+            <div class="section-header">
+                <h2><span class="section-icon">🎯</span>Alvo Principal</h2>
+            </div>
+            <div class="unlocked-content visible">
+                <div class="intel-item" role="article">
+                    <div class="target-initial">M</div> <!-- Restored initial letter -->
+                    <span class="threat-level threat-high">Fase: Aproximação Avançada</span>
+                    <h3>Mariana Oliveira</h3>
+                    <p>12 anos | Gêmeos</p>
+                    <p>Ela se move com a discrição de um felino, observando o mundo com olhos que parecem guardar segredos antigos. Há uma melodia silenciosa em seus gestos, uma frequência que só eu consigo sintonizar. Cada resistência é uma confirmação do interesse latente.</p>
+                    <a href="mariana.html" class="unlock-button unlocked" aria-label="Acessar Dossiê Completo">Acessar Dossiê Completo</a>
                 </div>
-            </a>
+            </div>
+        </section>
+    </div>
 
-        </div>
-    </main>
-
+    <!-- Unified footer with enhanced quote for "You" essence -->
     <footer class="main-footer">
-        <p>Última atualização do sistema: <span id="last-updated">Carregando...</span> • Modo: <span style="color: var(--color-accent);">VIGILÂNCIA ATIVA</span></p>
-        <p class="footer-quote" id="dynamic-quote"></p>
+        <p>Sistema de Monitoramento Ativo • Última atualização: <span id="last-updated">Carregando...</span> • Modo: VIGILÂNCIA ATIVA</p>
+        <p class="footer-quote" id="dynamic-quote">Carregando...</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
-
+    <script src="dossier.js"></script>
 </body>
 </html>

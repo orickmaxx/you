@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Só executa se estiver na página do dossiê
+    // Only execute if dossier-container exists
     if (!document.querySelector('.dossier-container')) {
+        document.body.classList.add('dossier-page'); // Ensure dossier-page class for index.html
         return;
     }
 
-    // Adiciona uma classe ao body para estilização específica das partículas
+    // Add dossier-page class for styling
     document.body.classList.add('dossier-page');
 
+    // Passwords for sections and master access
     const sectionPasswords = {
         'psychological': 'joemoldberg',
         'network': 'quinntorres',
@@ -30,16 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = (section) => {
         currentSection = section;
         const sectionTitle = document.querySelector(`[data-section="${section}"]`).previousElementSibling.textContent;
-        modalTitle.textContent = '🔐 Acesso Restrito';
-        modalSubtitle.textContent = `Digite a senha para: ${sectionTitle}`;
-        modal.classList.add('active');
-        passwordInput.focus();
+        if (modalTitle) modalTitle.textContent = '🔐 Acesso Restrito';
+        if (modalSubtitle) modalSubtitle.textContent = `Digite a senha para: ${sectionTitle}`;
+        if (modal) modal.classList.add('active');
+        if (passwordInput) passwordInput.focus();
     };
 
     const closeModal = () => {
-        modal.classList.remove('active');
-        passwordInput.value = '';
-        passwordInput.classList.remove('shake');
+        if (modal) modal.classList.remove('active');
+        if (passwordInput) {
+            passwordInput.value = '';
+            passwordInput.classList.remove('shake');
+        }
         currentSection = null;
     };
 
@@ -48,13 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const unlockedDiv = document.getElementById(`${section}-unlocked`);
         const button = document.querySelector(`[data-section="${section}"]`);
 
-        if(lockedDiv) lockedDiv.style.display = 'none';
-        if(unlockedDiv) unlockedDiv.classList.add('visible');
-        
-        if(button) {
+        if (lockedDiv) lockedDiv.style.display = 'none';
+        if (unlockedDiv) unlockedDiv.classList.add('visible');
+        if (button) {
             button.classList.add('unlocked');
             button.innerHTML = '✅ Desbloqueado';
-            button.disabled = true; // Desabilita o botão
+            button.disabled = true;
         }
     };
 
@@ -69,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const checkPassword = (event) => {
         event.preventDefault();
+        if (!passwordInput || !currentSection) return;
         const password = passwordInput.value.toLowerCase().trim();
 
         if (masterPasswords.includes(password)) {
@@ -78,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (currentSection && sectionPasswords[currentSection] === password) {
+        if (sectionPasswords[currentSection] === password) {
             localStorage.setItem(`section_${currentSection}`, 'unlocked');
             showSection(currentSection);
             closeModal();
@@ -93,20 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => openModal(button.dataset.section));
     });
 
-    if(passwordForm) passwordForm.addEventListener('submit', checkPassword);
-    if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
-    if(modal) modal.addEventListener('click', (e) => {
+    if (passwordForm) passwordForm.addEventListener('submit', checkPassword);
+    if (closeModalButton) closeModalButton.addEventListener('click', closeModal);
+    if (modal) modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) closeModal();
     });
 
-    // Animações de Scroll
+    // Scroll Animations
     const initScrollAnimations = () => {
         const sections = document.querySelectorAll('.dossier-section');
         if (sections.length === 0) return;
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -115,52 +119,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, { threshold: 0.1 });
-        
+
         sections.forEach(section => observer.observe(section));
     };
 
-    // Atualizar Data/Hora e Citações
-    const updateTimestampsAndQuotes = () => {
-        const lastUpdated = document.getElementById('last-updated');
-        const lastUpdateDisplay = document.getElementById('last-update-display');
-        const footerQuote = document.getElementById('footer-quote');
-
-        const quotes = [
-            "O conhecimento é poder. E eu conheço você melhor que você mesma.",
-            "A verdadeira intimidade requer vigilância constante.",
-            "Eu não sou obsessivo. Eu sou dedicado.",
-            "Seus segredos estão seguros comigo. Todos eles.",
-            "Eu seria capaz de qualquer coisa por você. Lembre-se disso."
-        ];
-
-        const update = () => {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            const dateString = now.toLocaleDateString('pt-BR');
-            const fullTimestamp = `${dateString} às ${timeString}`;
-            
-            if(lastUpdated) lastUpdated.textContent = fullTimestamp;
-            if(lastUpdateDisplay) lastUpdateDisplay.textContent = fullTimestamp;
-        };
-
-        const updateQuote = () => {
-            if(footerQuote) {
-                const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-                footerQuote.textContent = `"${randomQuote}"`;
-            }
-        };
-
-        update();
-        updateQuote();
-        setInterval(update, 1000);
-        setInterval(updateQuote, 45000);
-    };
-
-    // Inicialização na página do dossiê
+    // Initialize on dossier page
     initScrollAnimations();
-    updateTimestampsAndQuotes();
 
-    // Verifica ao carregar a página quais seções já estão desbloqueadas
+    // Check unlocked sections on load
     Object.keys(sectionPasswords).forEach(section => {
         if (isSectionUnlocked(section)) {
             showSection(section);
