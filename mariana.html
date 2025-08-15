@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Meta tags for charset, viewport, and SEO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dossiê Classificado: Mariana - Análise comportamental completa e estratégias de aproximação.">
     <title>Dossiê: Mariana</title>
-    <!-- Unified CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts (Montserrat and Lora) -->
+    <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Favicon for accessibility -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body class="dossier-page">
-    <!-- Background particle canvas -->
     <canvas id="background-canvas"></canvas>
-    <!-- Mouse spotlight effect -->
     <div class="spotlight"></div>
 
-    <!-- Header with glitch effect -->
     <header class="dossier-header">
         <a href="index.html" class="back-link" aria-label="Voltar ao Observatório">← Voltar ao Observatório</a>
         <h1 id="main-title-dossier" class="glitch">Dossiê Classificado: Mariana</h1>
@@ -31,9 +24,7 @@
         </div>
     </header>
 
-    <!-- Main content container -->
     <div class="dossier-container container">
-        <!-- Section: Identification Sheet -->
         <section class="dossier-section">
             <div class="section-header">
                 <h2><span class="section-icon">📋</span>Ficha de Identificação</h2>
@@ -51,7 +42,6 @@
             </div>
         </section>
 
-        <!-- Section: Psychological Analysis -->
         <section class="dossier-section">
             <div class="section-header">
                 <h2><span class="section-icon">🧠</span>Análise Psicológica Avançada</h2>
@@ -79,7 +69,6 @@
             </div>
         </section>
 
-        <!-- Section: Network of Influences -->
         <section class="dossier-section">
             <div class="section-header">
                 <h2><span class="section-icon">🕸️</span>Rede de Influências e Ameaças</h2>
@@ -108,7 +97,6 @@
             </div>
         </section>
 
-        <!-- Section: Operation Convergence -->
         <section class="dossier-section">
             <div class="section-header">
                 <h2><span class="section-icon">🎯</span>Operação: Convergência</h2>
@@ -149,13 +137,19 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <p>Sistema de Monitoramento Ativo • Última sincronização: <span id="last-updated">Carregando...</span></p>
         <p class="footer-quote" id="dynamic-quote">Carregando...</p>
     </footer>
 
-    <!-- Password Modal -->
+    <a href="https://www.instagram.com/oliveiraxwv/" target="_blank" rel="noopener noreferrer" class="floating-btn" aria-label="Ver o perfil dela no Instagram" title="Onde ela se mostra para o mundo.">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+    </a>
+
     <div id="password-modal" class="modal-overlay" aria-hidden="true">
         <div class="modal-content">
             <span class="close-modal" aria-label="Fechar Modal">&times;</span>
@@ -168,8 +162,7 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="dossier.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/dossier.js"></script>
 </body>
 </html>
