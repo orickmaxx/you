@@ -1,32 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- NOVO: CONTROLE DA MÚSICA DE FUNDO ---
-    const audio = new Audio('msc/theme.mp3');
-    audio.loop = true;
-    audio.volume = 0.3; // Volume inicial, pode ajustar (0.0 a 1.0)
-
-    let isPlaying = false;
-
-    // Tenta tocar o áudio. Navegadores modernos exigem interação do usuário.
-    const playAudio = () => {
-        if (!isPlaying) {
+    
+    // --- CONTROLE DA MÚSICA DE FUNDO ---
+    const audio = document.getElementById('background-music');
+    let hasInteracted = false;
+    
+    // Tenta tocar a música. Se falhar, espera por uma interação do usuário.
+    function playAudioOnFirstAction() {
+        if (audio && !hasInteracted) {
+            audio.volume = 0.2; // Volume inicial baixo
             audio.play().then(() => {
-                isPlaying = true;
-                // Remove os event listeners depois que a música começar a tocar.
-                document.body.removeEventListener('click', playAudio);
-                document.body.removeEventListener('keydown', playAudio);
+                hasInteracted = true;
+                // Remove os listeners após o primeiro sucesso para não interferir com outros cliques
+                document.removeEventListener('click', playAudioOnFirstAction);
+                document.removeEventListener('keydown', playAudioOnFirstAction);
             }).catch(error => {
-                // Autoplay foi bloqueado, a música começará na primeira interação.
-                console.log('Autoplay foi bloqueado. Esperando interação do usuário.');
+                console.log("Autoplay bloqueado pelo navegador. Aguardando interação do usuário.");
             });
         }
-    };
+    }
 
-    // Adiciona event listeners para iniciar a música com a primeira interação do usuário.
-    document.body.addEventListener('click', playAudio);
-    document.body.addEventListener('keydown', playAudio);
-    // ------------------------------------------
+    // O navegador exige uma interação do usuário para iniciar o áudio.
+    // Usamos 'click' e 'keydown' como gatilhos.
+    document.addEventListener('click', playAudioOnFirstAction);
+    document.addEventListener('keydown', playAudioOnFirstAction);
 
-    // Particle Background Effect - Optimized: Reduced particle count, increased maxDistance to reduce connections
+
+    // Particle Background Effect - Optimized
     const initParticleBackground = () => {
         const canvas = document.getElementById('background-canvas');
         if (!canvas) return;
@@ -128,8 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "A distância só me dá mais espaço para observar cada detalhe seu.",
             "Eles te olham. Eu te enxergo por completo.",
             "Hello, you.", // Added "You" reference
-            "I will do anything to protect us.", // More show-inspired
-            "Sometimes, love means taking matters into your own hands."
+            "Não há nada que eu não faria para nos proteger.", // More show-inspired
+            "Às vezes, amar significa resolver as coisas do seu próprio jeito."
         ];
 
         const update = () => {
